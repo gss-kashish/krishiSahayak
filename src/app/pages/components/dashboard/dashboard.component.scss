@@ -1,0 +1,203 @@
+.dashboard-cards {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(222, 222, 222, 0.4);
+  box-shadow: 0px 4px 8px rgba(222, 222, 222, 0.2);
+  border-radius: 10px;
+  min-height: 130px;
+  margin-bottom: 30px;
+  .card-stats {
+    flex: 1;
+    padding: 0 30px;
+    text-align: right;
+    h3 {
+      font-size: 30px;
+    }
+    h5 {
+      font-size: 18px;
+      color: #1e1d25;
+    }
+  }
+
+  &.sales_create {
+    background: #f3f4ff;
+    border-left: 3px solid #2d3cd9;
+    h3 {
+      color: #2d3cd9;
+    }
+  }
+
+  &.purchase_create {
+    background: #ebfaff;
+    border-left: 3px solid #0bbdf2;
+    h3 {
+      color: #0bbdf2;
+    }
+  }
+
+  &.item_purchase {
+    background: #fffdf7;
+    border-left: 3px solid #ffc400;
+    h3 {
+      color: #ffc400;
+    }
+  }
+
+  &.item_sold {
+    background: #ffeeee;
+    border-left: 3px solid #fe3333;
+    h3 {
+      color: #fe3333;
+    }
+  }
+
+  &.closing_stock {
+    background: #edfff6;
+    border-left: 3px solid #47d990;
+    h3 {
+      color: #47d990;
+    }
+  }
+
+  &.total_purchase {
+    background: #f2f2ff;
+    border-left: 3px solid #4747d9;
+    h3 {
+      color: #4747d9;
+    }
+  }
+
+  &.total_sale {
+    background: #f8f3ff;
+    border-left: 3px solid #8947d9;
+    h3 {
+      color: #8947d9;
+    }
+  }
+
+  &.direct_expense {
+    background: #ffedf6;
+    border-left: 3px solid #e93092;
+    h3 {
+      color: #e93092;
+    }
+  }
+
+  &.indirect_expense {
+    background: #fff4ef;
+    border-left: 3px solid #f7550a;
+    h3 {
+      color: #f7550a;
+    }
+  }
+}
+
+.dashboard-filter {
+  display: flex;
+  align-items: flex-end;
+  background: #ffffff;
+  border: 1px solid rgba(222, 222, 222, 0.4);
+  box-shadow: 0px 4px 8px rgba(222, 222, 222, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+  .common-form {
+    min-width: 200px;
+    margin: 0 1.5rem 0 0;
+  }
+  .button-primary {
+    min-width: 150px;
+    height: 40px;
+  }
+}
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  display: none;
+  overflow: hidden;
+}
+.pf-mt15{
+  margin-top: 15px !important;
+}
+
+.a:hover {
+  color: #886AB5;
+}
+
+.pf-btn {
+  display: flex;
+  justify-content: right;
+  //margin-left: inherit !important;
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.accordion-item {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  border: 1px solid #ccc;
+}
+
+.accordion-header {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  background-color: #f2f2f2;
+}
+
+.accordion-toggle {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #666;
+  cursor: pointer;
+}
+
+.accordion-content {
+  display: none;
+  flex: 3;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.accordion-item.active .accordion-content {
+  display: block;
+}
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .w-40 {
+    width: 40%;
+  }
+

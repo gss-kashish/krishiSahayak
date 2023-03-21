@@ -1,0 +1,204 @@
+<div>
+  <div class="modal-header">
+    <h4 class="modal-title" *ngIf="!id" id="modal-basic-title">Add an Item!</h4>
+    <h4 class="modal-title" *ngIf="id" id="modal-basic-title">Edit an Item!</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="activeModal.close('Cross click')"
+    ></button>
+  </div>
+
+  <div class="modal-body">
+    <div class="row">
+        <div class="col-12">
+            <div class="common-form">
+                <label for="search" class="form-label">Item Name</label>
+                <input
+                type="text"
+                class="form-control"
+                id="search"
+                placeholder="Enter an item name"
+                [(ngModel)]="itemModel.name"
+                />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="custom-ng-select">
+                <div class="custom-ng-select-wrapper">
+                    <label for="" class="form-label">Item Category</label>
+                    <ng-select placeholder="" [clearable]="true" [(ngModel)]="itemModel.categoryId">
+                        <ng-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</ng-option>
+                    </ng-select>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="common-form">
+                <label for="search" class="form-label">Item Code</label>
+                <input
+                type="text"
+                class="form-control"
+                id="search"
+                placeholder="Enter the item code"
+                [(ngModel)]="itemModel.itemCode"
+                />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="common-form">
+                <label for="search" class="form-label">Item Cost Price</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="search"
+                  placeholder="Enter the item cost price"
+                  [(ngModel)]="itemModel.costPrice"
+                />
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="common-form">
+                <label for="search" class="form-label">Item Selling Price</label>
+                <input
+                    type="number"
+                    class="form-control"
+                    id="search"
+                    placeholder="Enter the item selling price"
+                    [(ngModel)]="itemModel.price"
+                />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="custom-ng-select mb-3">
+                <div class="custom-ng-select-wrapper">
+                    <label for="" class="form-label">Offer</label>
+                    <ng-select placeholder="" [clearable]="false" [(ngModel)]="itemModel.offerId">
+                    </ng-select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="common-form">
+                <label for="search" class="form-label">Item Description</label>
+                <input
+                type="text"
+                class="form-control"
+                id="search"
+                placeholder="Enter the description of the item"
+                [(ngModel)]="itemModel.description"
+                />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="common-form">
+                <label for="search" class="form-label">Link Item to Mobile App Categories</label>
+                <input
+                type="text"
+                class="form-control"
+                id="search"
+                [multiple]="true"
+                placeholder="Select mobile app categories"
+                [(ngModel)]="itemModel.mobileSubCategoryItems"
+                />
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="mb-3">
+        <ngb-accordion #acc="ngbAccordion">
+            <ngb-panel title="Add Initial Stock Inventory">
+                <ng-template ngbPanelContent>
+                    <div class="row" *ngFor="let initialInventoryStockDTO of itemModel.initialInventoryStockDTOS">
+                        <div class="col-2 text-center">
+                            {{initialInventoryStockDTO.branchDTO.name}}
+                        </div>
+                        <div class="col-2">
+                            <div class="common-form">
+                                <label for="search" class="form-label">As of Date</label>
+                                <input
+                                type="date"
+                                class="form-control"
+                                id="search"
+                                placeholder=""
+                                [(ngModel)]="initialInventoryStockDTO.date"
+                                />
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="common-form">
+                                <label for="search" class="form-label">Price</label>
+                                <input
+                                type="text"
+                                class="form-control"
+                                id="search"
+                                placeholder="Price"
+                                [(ngModel)]="initialInventoryStockDTO.initialStockInventoryPrice"
+                                />
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="common-form">
+                                <label for="search" class="form-label">Quantity</label>
+                                <input
+                                type="text"
+                                class="form-control"
+                                id="search"
+                                placeholder="Quantity"
+                                [(ngModel)]="initialInventoryStockDTO.initialStockInventoryQuantity"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </ngb-panel>
+        </ngb-accordion>
+    </div> -->
+      
+    <div class="row">
+        <div class="col-12">
+        <label for="search" class="form-label">Item Image</label>
+            <div class="common-form">
+                <input type="file" (change)="onChange($event)" accept=".jpg,.png,.gif,.jpeg"/>
+                <button type="button" class="btn btn-default">
+                    Add More Images
+                </button>
+            </div> 
+            <div *ngIf="myimage">
+                <img [src]="myimage" alt="" style="max-height: 10%; max-width: 10%;"/>
+            </div>
+            <div *ngIf="itemModel.image">
+                <img src="{{itemModel.amazonS3Url + itemModel.image}}" alt="" style="max-height: 10%; max-width: 10%;"/>
+            </div>
+        </div>
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+    <input type="checkbox" id="createAnother" name="createAnother" [(ngModel)]="createAnother">
+    <label for="createAnother">Create Another</label><br>
+    <button type="button" class="btn btn-sm btn-success" [disabled]="buttonClicked" (click)="save()">
+      Save
+    </button>
+    <button type="button" class="btn btn-sm btn-default" (click)="activeModal.close('Cross click')">
+      Cancel
+    </button>
+  </div>
+</div>

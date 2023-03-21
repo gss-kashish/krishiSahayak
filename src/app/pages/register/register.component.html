@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration Form In HTML and CSS</title>
+</head>
+<body>
+
+<div class="wrapper">
+	<div class="r_form_wrap">
+		
+		<div class="title">
+			<p>Registration Form</p>
+		</div>
+
+		<div class="r_form">
+			<form>
+				<div class="input_wrap">
+					<label for="yourname">Your Name</label>
+					<div class="input_item form-control">
+						<span class="icon">
+						</span>
+						<input type="text" name="your name" class="input" id="yourname">
+					</div>
+				</div>
+				<div class="input_wrap">
+					<label for="emailaddress">Email Address</label>
+					<div class="input_item form-control">
+						<span class="icon">
+						</span>
+						<input type="text" name="email address" class="input" id="emailaddress">
+					</div>
+				</div>
+				<div class="input_wrap">
+					<label for="password">Password</label>
+					<div class="input_item form-control">
+						<span class="icon">
+						</span>
+						<input type="password" name="password" class="input" id="password">
+					</div>
+				</div>
+				<div class="input_wrap">
+					<label for="confirmpassword">Confirm Password</label>
+					<div class="input_item form-control">
+						<span class="icon">
+						</span>
+						<input type="password" name="confirm password" class="input" id="confirmpassword">
+					</div>
+				</div>
+				<div class="input_wrap">
+					<label for="phone">Phone</label>
+					<div class="input_item form-control">
+						<span class="icon">
+						</span>
+						<input type="number" name="phone" class="input" id="phone">
+					</div>
+				</div>
+				<div class="input_wrap">
+					<label>Gender</label>
+					<div class="input_radio">
+						<div class="input_radio_item">
+							<input type="radio" id="male" name="gender" class="radio" value="male">
+							<label for="male" class="radio_mark">
+							Male</label>
+						</div>
+						<div class="input_radio_item">
+							<input type="radio" id="female" name="gender" class="radio" value="female">
+							<label for="female" class="radio_mark">
+								Female</label>
+						</div>
+						<div class="input_radio_item">
+							<input type="radio" id="others" name="gender" class="radio" value="others">
+							<label for="others" class="radio_mark">
+								Others</label>
+						</div>
+					</div>
+				</div>
+                <div class="input_wrap">
+					<label>Category</label>
+					<div class="input_radio">
+						<div class="input_radio_item">
+							<input type="radio" id="farmer" name="category" class="radio" value="farmer">
+							<label for="farmer" class="radio_mark">
+							Farmer</label>
+						</div>
+						<div class="input_radio_item">
+							<input type="radio" id="nonResident" name="category" class="radio" value="nonResident">
+							<label for="nonResident" class="radio_mark">
+								Non Resident</label>
+						</div>
+					</div>
+				</div>
+
+				<button class="btn btn-primary" (click)="register()">Register Now</button>
+                <div style="text-align: center;">
+                    <a href="login">Back to LogIn</a>
+                </div>
+			</form>
+		</div>
+
+	</div>
+</div>
+
+</body>
+</html>

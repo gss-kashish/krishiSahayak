@@ -1,0 +1,596 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+@import "./assets/theme/fonts.scss";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "~@fortawesome/fontawesome-free/css/all.css";
+@import "~ngx-toastr/toastr";
+
+// Colors
+$primary: #505cfb;
+$secondary: #f27932;
+$dark: #17161c;
+$dark-light: #1e1d25;
+$light: #ffffff;
+
+body {
+  @extend .font-weight-regular;
+  line-height: normal;
+  color: $dark;
+  background-color: #fafafc;
+}
+
+// Loader
+.loader-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner-border {
+  &.custom-theme {
+    position: relative;
+    border: 0;
+    width: 40px;
+    height: 40px;
+    --bs-spinner-animation-speed: 0.9s;
+    &::before {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      content: "";
+      background-image: url(./assets/images/spinner-logo.svg);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+}
+
+// Common Input
+.form-control {
+  &:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: inherit;
+  }
+}
+
+.common-form {
+  margin-bottom: 1.5rem;
+  label {
+    font-size: 13px;
+    margin-bottom: 0.3rem;
+    color: $dark-light;
+    line-height: normal;
+  }
+  .form-control {
+    padding: 0.5rem 0.75rem;
+    font-size: 15px;
+    color: $dark;
+    line-height: normal;
+  }
+}
+
+// Custom Ng-Select Styling
+
+.custom-ng-select {
+  .custom-ng-select-wrapper {
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+    label {
+      font-size: 13px;
+      margin-bottom: 0.3rem;
+    }
+  }
+  .form-control {
+    border: 1px solid #ddd;
+    color: #444444;
+    font-size: 14px;
+    height: 36px;
+    line-height: normal;
+  }
+  .ng-select {
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+    &.ng-select-focused:not(.ng-select-opened) > .ng-select-container {
+      border-color: transparent;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+        0 0 0 3px rgba(145, 49, 116, 0.1);
+    }
+    .ng-select-container {
+      color: #555555;
+      border: 1px solid #ced4da;
+      &:hover {
+        box-shadow: none;
+      }
+      .ng-value-container {
+        font-size: 15px;
+      }
+    }
+    .ng-dropdown-panel {
+      background-color: #fafafa;
+      border: 1px solid #ddd;
+      box-shadow: none;
+      .ng-dropdown-panel-items {
+        .ng-option {
+          font-size: 14px;
+          color: #666666;
+          background-color: #fafafa;
+          &.ng-option-marked {
+            background-color: #f0f0f0;
+          }
+        }
+      }
+    }
+    .ng-arrow-wrapper {
+      .ng-arrow {
+        border-color: #5a5a5a transparent transparent;
+      }
+    }
+  }
+}
+
+// Buttons
+
+button,
+.btn {
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.btn-primary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #505cfb;
+  --bs-btn-border-color: #505cfb;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #3945e6;
+  --bs-btn-hover-border-color: #3945e6;
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #3945e6;
+  --bs-btn-active-border-color: #3945e6;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #505cfb;
+  --bs-btn-disabled-border-color: #505cfb;
+}
+
+.button-primary {
+  border-radius: 4px;
+  font-size: 15px;
+  line-height: normal;
+  min-height: 40px;
+}
+
+.button-primary-small {
+  border-radius: 4px;
+  font-size: 13px;
+  line-height: normal;
+  min-height: 36px;
+}
+
+// Header
+
+header.main-header {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  min-height: 60px;
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0px 1px 0px rgba(222, 222, 222, 0.1);
+  padding: 0 30px;
+  left: 60px;
+  width: calc(100% - 60px);
+  transition: all 0.3s ease-in-out;
+  .leftsect {
+    flex: 1;
+    .sidemenu-btn {
+      border: 1px solid $dark-light;
+      width: 36px;
+      height: 36px;
+      background-color: transparent;
+      border-radius: 4px;
+      transition: all 0.3s ease-in-out;
+      i {
+        font-size: 18px;
+      }
+    }
+  }
+  .rightsect {
+    .setting-dropdown {
+      .btn {
+        padding: 0;
+        border: 0;
+        &:hover,
+        &:focus {
+          border: none;
+        }
+      }
+      .dropdown-menu {
+        .dropdown-item {
+          font-size: 14px;
+          &:hover {
+            color: #fff;
+            background-color: rgba(#3945e6, 0.8);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Sidebar
+
+.sidebar {
+  position: fixed;
+  min-width: 60px;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: #ffffff;
+  box-shadow: 1px 0px 0px rgba(222, 222, 222, 0.1);
+  transition: all 0.3s ease-in-out;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+    .logo-inner {
+      display: inline-flex;
+      background-image: url(./assets/images/IYI_logo_small.svg);
+      width: 40px;
+      height: 56px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  .navigation {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: calc(100vh - 80px);
+    padding: 10px 0;
+    a {
+      padding: 10px 15px;
+      text-decoration: none;
+      font-size: 15px;
+      color: #7f7f7f;
+      border-right: 2px solid transparent;
+      transition: all 0.3s ease-in-out;
+      @extend .font-weight-medium;
+      i {
+        margin-right: 8px;
+        font-size: 16px;
+        min-width: 20px;
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+      }
+      span {
+        transition: all 0.3s ease-in-out;
+        display: none;
+      }
+      &:not(:last-child) {
+        margin-bottom: 8px;
+      }
+      &:hover,
+      &:active {
+        color: $primary;
+        background-color: #f5f5f5;
+        i {
+          color: $secondary;
+        }
+      }
+      &.active {
+        color: $primary;
+        background-color: #f5f5f5;
+        border-right: 2px solid $primary;
+        i {
+          color: $secondary;
+        }
+      }
+    }
+  }
+}
+
+body {
+  &.sidemenu-open {
+    header.main-header {
+      width: calc(100% - 200px);
+      left: 200px;
+    }
+    .sidebar-default {
+      width: 200px;
+      .logo {
+        .logo-inner {
+          background-image: url(/assets/images/IYI_Logo.svg);
+          width: 170px;
+          height: 56px;
+        }
+      }
+      .navigation {
+        a {
+          span {
+            display: inline-flex;
+          }
+        }
+      }
+    }
+    .content-page {
+      margin-left: 200px;
+    }
+  }
+}
+// Page Wrapper
+
+.content-page {
+  overflow: hidden;
+  margin-left: 62px;
+  padding: 80px 15px 0px;
+  min-height: 100vh;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.page-title {
+  font-size: 28px;
+  @extend .font-weight-semibold;
+  color: $primary;
+  margin: 0;
+}
+
+.title-buttons {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+// Margins
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mb-40 {
+  margin-bottom: 40px;
+}
+
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid rgba(222, 222, 222, 0.4);
+  box-shadow: 0px 4px 8px rgba(222, 222, 222, 0.2);
+  border-radius: 10px;
+  height: calc(100vh - 80px - 58px - 15px);
+  .filter-wrapper {
+    display: flex;
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(222, 222, 222, 0.5);
+    .common-form {
+      margin-bottom: 0;
+    }
+  }
+  .table-wrapper {
+    flex: 1;
+    overflow-y: auto;
+  }
+  .pagination-wrapper {
+    display: flex;
+    padding: 15px 20px;
+    justify-content: flex-end;
+    border-top: 1px solid rgba(222, 222, 222, 0.5);
+    ul {
+      margin: 0;
+      li.page-item {
+        &.active {
+          a.page-link {
+            background-color: #505cfb;
+            border-color: transparent;
+            color: #ffffff;
+            &:hover {
+              color: #ffffff;
+            }
+          }
+        }
+        &.disabled {
+          a.page-link {
+            color: rgba(#555555, 0.5);
+          }
+        }
+        a.page-link {
+          color: #555555;
+          line-height: 1.2;
+          &:hover {
+            color: #555555;
+          }
+        }
+      }
+    }
+  }
+}
+
+.common-table {
+  width: 100%;
+  thead {
+    border-bottom: 1px solid rgba(222, 222, 222, 0.5);
+    tr {
+      th {
+        padding: 10px;
+        color: #8e8e8e;
+        font-size: 14px;
+        @extend .font-weight-medium;
+        &:first-child {
+          padding-left: 20px;
+        }
+        &:last-child {
+          padding-right: 20px;
+        }
+      }
+    }
+  }
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background-color: #faf7f3;
+      }
+      td {
+        padding: 10px;
+        font-size: 14px;
+        @extend .font-weight-regular;
+        &:first-child {
+          padding-left: 20px;
+        }
+        &:last-child {
+          padding-right: 20px;
+        }
+      }
+    }
+  }
+}
+
+.actions-dropdown {
+  .btn {
+    font-size: 14px;
+    padding: 2.5px 8px;
+    border: 1px solid #505cfb;
+    background-color: #fcfcff;
+    border-radius: 4px;
+    color: #505cfb;
+    &:hover,
+    &:focus {
+      border: 1px solid #505cfb;
+    }
+    &::after {
+      margin-left: 5px;
+    }
+  }
+  .dropdown-menu {
+    .dropdown-item {
+      font-size: 13px;
+      &:hover {
+        color: #fff;
+        background-color: rgba(#3945e6, 0.8);
+      }
+    }
+  }
+}
+
+// Items Page
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  box-shadow: 0px 2px 8px rgb(234 236 255);
+  border: 1px solid rgba(222, 222, 222, 0.4);
+  border-radius: 5px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  .card-info {
+    display: flex;
+    flex: 1;
+    padding: 15px;
+    .product-image-wrapper {
+      border: 1px solid rgba(222, 222, 222);
+      border-radius: 5px;
+      overflow: hidden;
+      width: 120px;
+      height: 120px;
+      .product-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+    .product-information {
+      flex: 1;
+      padding-left: 15px;
+      h2 {
+        font-size: 18px;
+        color: $dark;
+        margin: 0 0 5px;
+        @extend .font-weight-bold;
+      }
+      p {
+        font-size: 14px;
+        line-height: normal;
+        color: #666666;
+        margin: 0 0 8px;
+      }
+      .available-stock {
+        span {
+          font-size: 18px;
+          @extend .font-weight-semibold;
+          color: #5462f3;
+        }
+        font-size: 14px;
+        margin: 0 0 8px;
+        color: #666666;
+      }
+      .product-price {
+        font-size: 20px;
+        color: $secondary;
+        @extend .font-weight-bold;
+      }
+    }
+  }
+  .card-options {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid rgba(222, 222, 222, 0.4);
+    padding: 15px;
+    .button-primary-small-outline {
+      font-size: 14px;
+      padding: 2.5px 8px;
+      border: 1px solid #979797;
+      background-color: #fafafc;
+      border-radius: 4px;
+      color: #979797;
+      &:hover,
+      &:focus {
+        border: 1px solid #505cfb;
+        box-shadow: none;
+        color: $primary;
+      }
+      &:not(:first-child) {
+        margin-left: 15px;
+      }
+    }
+  }
+}
+
+.product-options-tooltip {
+  font-size: 12px;
+  .tooltip-inner {
+    background-color: #202020;
+  }
+}
+
+i:hover{
+  cursor:pointer;
+}
+
+.description{
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

@@ -1,0 +1,20 @@
+<div class="container-fluid">
+  <!-- Page Title -->
+  <div class="row mb-20">
+    <div class="col-6">
+      <h2 class="page-title">Non Resident Section</h2>
+    </div>
+  </div>
+
+  <!-- Page Content -->
+
+  <div class="row">
+    <div class="col-12">
+      <div class="page-container">
+        <div style="margin-top: 40px;">
+          <ngx-datatable class="bootstrap" [columns]="columns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+              rowHeight="auto" [limit]="10" [rows]="rows"> </ngx-datatable>
+      </div>
+    </div>
+  </div>
+</div>

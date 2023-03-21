@@ -1,0 +1,103 @@
+<div class="container-fluid">
+    <!-- Page Title -->
+    <div class="row mb-20">
+        <div class="col-6">
+            <h2 class="page-title">Customer Categories</h2>
+        </div>
+        <div class="col-6">
+            <div class="title-buttons">
+                <button type="submit" *ngIf="userPermissions && userPermissions.indexOf('add_new_category') >= 0" class="btn btn-primary button-primary-small me-4" (click)="addCustomerCategory()">
+                    Add New Categories
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Page Content -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-container">
+                <!-- Filters -->
+                <div class="filter-wrapper" *ngIf="userPermissions && userPermissions.indexOf('customer_category_filter') >= 0">
+                    <div class="col-4 me-3">
+                        <div class="common-form">
+                            <label for="search" class="form-label">Search By Name</label>
+                            <input type="text" class="form-control" id="search" placeholder="Search"
+                                [(ngModel)]="filter.term" (ngModelChange)="debounceEvent($event)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="loader-wrapper" *ngIf="loadingCustomerCategory">
+                    <div class="spinner-border custom-theme" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+                <div class="table-wrapper">
+                    <table class="common-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th *ngIf="userPermissions && userPermissions.indexOf('action_edit_name') >= 0" >Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let customerCategory of customerCategoryResponse.content">
+                                <td>{{customerCategory.id}}</td>
+                                <td>
+                                    <span *ngIf="!customerCategory.editable">{{customerCategory.name}}</span>
+                                    <input type="text" *ngIf="customerCategory.editable"
+                                        [(ngModel)]="customerCategory.name">
+                                </td>
+                                <td>
+                                    <span
+                                        *ngIf="!customerCategory.editable">{{customerCategory.domainCategoryDTO.name}}</span>
+                                    <ng-select [clearable]="false" *ngIf="customerCategory.editable"
+                                        [(ngModel)]="customerCategory.domainCategoryDTO.id" [disabled]="true">
+                                        <ng-option *ngFor="let customerCategory of domainCategoryResponse.content"
+                                            [value]="customerCategory.id">
+                                            {{customerCategory.name}}
+                                        </ng-option>
+                                    </ng-select>
+                                </td>
+                                <td>
+                                    <div>
+                                        <span *ngIf="!customerCategory.editable">
+                                            <a *ngIf="userPermissions && userPermissions.indexOf('action_edit_name') >= 0" >
+                                                <i style="color: blue" class="fa fa-edit"
+                                                    (click)="editCustomerCategory(customerCategory)"></i>
+                                            </a>
+                                        </span>
+                                        <span *ngIf="customerCategory.editable">
+                                            <a>
+                                                <i style="color: green" class="fa fa-check"
+                                                    (click)="updateCustomerCategory(customerCategory)"></i>
+                                            </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a>
+                                                <i style="color: red" class="fa fa-close"
+                                                    (click)="close(customerCategory)"></i>
+                                            </a>
+                                        </span>
+                                        <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+                                        <!-- <span *ngIf="!customerCategory.editable">
+                                            <a><i style="color: red" class="fa fa-trash"
+                                                    (click)="deleteCustomerCategory(customerCategory.id)"></i>
+                                            </a>
+                                        </span> -->
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination-wrapper" [hidden]="!(customerCategoryResponse && !loadingCustomerCategory)">
+                    <ngb-pagination (pageChange)="getCustomerCategory($event)"
+                        [collectionSize]="customerCategoryResponse.totalElements" [maxSize]="10" [boundaryLinks]="true"
+                        [rotate]="true" [pageSize]="customerCategoryResponse.size" [(page)]="filter.pageable.page"
+                        size="sm" class="accordion-pagination-small">
+                    </ngb-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
